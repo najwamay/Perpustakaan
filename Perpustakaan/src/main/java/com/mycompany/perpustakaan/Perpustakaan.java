@@ -12,6 +12,10 @@ import java.util.*;
 public class Perpustakaan {
 
     public static void main(String[] args) {
-        
+        String url = "jdbc:mysql://localhost:3306//perpustakaan";
+        String username = "root";
+        String password = "";
+        Connect con = new Connect();
+        con.connect();
     }
 }
