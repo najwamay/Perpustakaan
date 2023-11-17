@@ -3,7 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.perpustakaan;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Arif
@@ -40,6 +46,11 @@ public class Anggota_Delete extends javax.swing.JFrame {
         jLabel2.setText("Password");
 
         jButton1.setText("Delete");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLabel3.setText("Delete Anggota");
@@ -87,6 +98,33 @@ public class Anggota_Delete extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int pass = Integer.parseInt(jTextField2.getText());
+        Connection koneksi;
+        if (pass == 1){
+            int ID = Integer.parseInt(jTextField1.getText());
+            String url = "jdbc:mysql://localhost:3306/perpustakaan";
+            String username = "root";
+            String password = "";
+            Connection connection;
+            try {
+                connection = DriverManager.getConnection(url, username, password);
+                PreparedStatement ps = connection.prepareStatement("DELETE FROM anggota WHERE ID = ?");
+                ps.setInt(1,ID);
+                ps.executeUpdate(); 
+            } catch (SQLException ex) {
+                Logger.getLogger(Anggota_Delete.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.dispose();
+            new Anggota().setVisible(true);
+        }else{
+            System.out.println("Wrong Password");
+            this.dispose();
+            new Anggota().setVisible(true);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

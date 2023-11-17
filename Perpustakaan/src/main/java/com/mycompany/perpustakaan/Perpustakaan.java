@@ -9,7 +9,7 @@ import java.util.*;
  *
  * @author Arif
  */
-public class Perpustakaan {
+public class Perpustakaan extends Anggota_Registrasi{
 
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306//perpustakaan";
@@ -17,5 +17,7 @@ public class Perpustakaan {
         String password = "";
         Connect con = new Connect();
         con.connect();
+        new Anggota().setVisible(true);
+        System.out.println("");
     }
 }

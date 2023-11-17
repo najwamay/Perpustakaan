@@ -60,6 +60,11 @@ public class Anggota extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(102, 102, 102));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Delete");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -114,6 +119,11 @@ public class Anggota extends javax.swing.JFrame {
         // TODO add your handling code here:
         new Anggota_Registrasi().setVisible(true);
     }//GEN-LAST:event_RegistrasiActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        new Anggota_Delete().setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

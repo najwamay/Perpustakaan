@@ -15,7 +15,7 @@ import java.sql.Statement;
  */
 public class Connect {
     public void connect(){
-        String url = "jdbc:mysql://localhost:3306/databasedemo";
+        String url = "jdbc:mysql://localhost:3306/perpustakaan";
         String username = "root";
         String password = "";
         try {

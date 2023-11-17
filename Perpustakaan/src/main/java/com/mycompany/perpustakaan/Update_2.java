@@ -3,7 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.perpustakaan;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author HP
@@ -13,8 +18,20 @@ public class Update_2 extends javax.swing.JFrame {
     /**
      * Creates new form Update_2
      */
+    
+    Connection koneksi;
+    
     public Update_2() {
         initComponents();
+        
+        String url = "jdbc:mysql://localhost:3306//perpustakaan";
+        String username = "root";
+        String password = "";
+        try{
+            koneksi = DriverManager.getConnection(url, username, password);
+        }catch(SQLException ex){
+            System.out.println("Error = " + ex.getMessage());
+        }
     }
 
     /**
@@ -63,6 +80,12 @@ public class Update_2 extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setHeaderValue("Nama");
+            jTable1.getColumnModel().getColumn(1).setHeaderValue("Alamat");
+            jTable1.getColumnModel().getColumn(2).setHeaderValue("Telepon");
+            jTable1.getColumnModel().getColumn(3).setHeaderValue("Jenis Kelamin");
+        }
 
         jLabel4.setText("Telepon");
 
